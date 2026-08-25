@@ -47,14 +47,44 @@ with st.sidebar:
                 except requests.exceptions.ConnectionError as e:
                     st.error(f"Cannot reach backend at {upload_url}.\n\nDetails: {e}")
 
-    st.divider()
-    st.subheader("Ingested Documents")
-    try:
-        docs_response = requests.get(f"{BACKEND_URL}/documents", timeout=10)
-        documents = docs_response.json().get("documents", [])
-    except requests.exceptions.ConnectionError:
+  st.divider()
+st.subheader("Ingested Documents")
+
+try:
+    docs_response = requests.get(
+        f"{BACKEND_URL}/documents",
+        timeout=30
+    )
+
+    if docs_response.status_code == 200:
+        try:
+            data = docs_response.json()
+            documents = data.get("documents", [])
+        except ValueError:
+            documents = []
+            st.error(
+                "Backend returned an invalid JSON response. "
+                f"Response: {docs_response.text[:500]}"
+            )
+    else:
         documents = []
-        st.warning("Backend not running.")
+        st.error(
+            f"Documents API failed — "
+            f"Status {docs_response.status_code}\n\n"
+            f"Response: {docs_response.text[:500]}"
+        )
+
+except requests.exceptions.Timeout:
+    documents = []
+    st.warning("Backend took too long to respond. Render may be waking up.")
+
+except requests.exceptions.ConnectionError:
+    documents = []
+    st.warning("Cannot reach the backend.")
+
+except requests.exceptions.RequestException as e:
+    documents = []
+    st.error(f"Backend request failed: {e}")
 
     if documents:
         for doc in documents:
