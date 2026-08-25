@@ -14,10 +14,10 @@ import os
 # "Secrets" (Settings > Secrets) to your live Render backend URL, e.g.:
 # BACKEND_URL = "https://your-backend.onrender.com"
 try:
-    BACKEND_URL = st.secrets.get("BACKEND_URL", os.getenv("BACKEND_URL", "https://api.render.com/deploy/srv-da6lutpsrm7s73aj3c8g?key=LWHqFifKr4I"))
+    BACKEND_URL = st.secrets.get("BACKEND_URL", os.getenv("BACKEND_URL", "https://ai-due-diligence-copilot.onrender.com"))
 except Exception:
     # No secrets.toml file exists at all (normal for local development) — fall back to env var or default
-    BACKEND_URL = os.getenv("BACKEND_URL", "https://api.render.com/deploy/srv-da6lutpsrm7s73aj3c8g?key=LWHqFifKr4I")
+    BACKEND_URL = os.getenv("BACKEND_URL", "https://ai-due-diligence-copilot.onrender.com")
 
 st.set_page_config(page_title="AI Due Diligence Copilot", page_icon="📊", layout="wide")
 
