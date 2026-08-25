@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+chromadb
+sentence-transformers
+pdfplumber
+groq
+python-dotenv
+streamlit
+requests
+reportlab
+plotly
