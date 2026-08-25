@@ -47,8 +47,8 @@ with st.sidebar:
                 except requests.exceptions.ConnectionError as e:
                     st.error(f"Cannot reach backend at {upload_url}.\n\nDetails: {e}")
 
-  st.divider()
-  st.subheader("Ingested Documents")
+st.divider()
+st.subheader("Ingested Documents")
 
 try:
     docs_response = requests.get(
