@@ -4,7 +4,7 @@ A full-stack RAG (Retrieval-Augmented Generation) platform that analyzes company
 
 **Built on a 100% free stack** — no paid APIs, no credit card required.
 
-🔗 **Live Demo:** [your-app-name.streamlit.app](#) *(add your link once deployed)*
+🔗 **Live Demo:** [https://ai-due-diligence.streamlit.app/](#) *(add your link once deployed)*
 📂 **Source Code:** [github.com/YOUR_USERNAME/ai-due-diligence-copilot](#)
 
 ---
